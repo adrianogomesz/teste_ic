@@ -1,7 +1,9 @@
 **Teste Técnico – Pipeline de Dados ANS**
 
 Autor: Adriano Gomes
+
 Stack: Python, Pandas, Requests, BeautifulSoup
+
 Objetivo: Construir um pipeline completo de ingestão, tratamento, enriquecimento e agregação de dados públicos da ANS, com foco em robustez, clareza técnica e decisões justificadas.
 
 
@@ -22,25 +24,23 @@ Este projeto implementa um pipeline ETL (Extract, Transform, Load) a partir de d
 Os dados não são versionados no repositório. Todo o processo é reprodutível via execução do pipeline.
 
 
-📁 Estrutura do Projeto
-Teste_AdrianoGomes/
-├── api_ans/
-│   ├── main.py         # Orquestração do pipeline
-│   ├── scraper.py      # Navegação e descoberta de URLs
-│   ├── downloader.py   # Download e extração de arquivos
-│   ├── http_client.py  # Comunicação HTTP isolada
-│   ├── transformer.py  # Limpeza, enriquecimento e agregações
-│   ├── utils.py        # Funções utilitárias (ex: formatação BRL)
-│   └── __init__.py
-├── data/
-│   ├── raw/            # Dados brutos (ignorado no Git)
-│   └── processed/      # Dados processados (ignorado no Git)
-├── README.md
-├── requirements.txt
-└── .gitignore
+Estrutura do Projeto
+
+main.py         # Orquestração do pipeline
+scraper.py      # Navegação e descoberta de URLs
+downloader.py   # Download e extração de arquivos
+http_client.py  # Comunicação HTTP isolada
+transformer.py  # Limpeza, enriquecimento e agregações
+utils.py        # Funções utilitárias (ex: formatação BRL)
+
+data/
+raw/            # Dados brutos (ignorado no Git)
+processed/      # Dados processados (ignorado no Git)
+
 
 
 **Arquitetura do Pipeline (ETL)**
+
 Extract:
 
 - Navegação automática no repositório FTP da ANS
@@ -75,6 +75,7 @@ Load:
 
 
 **Tradeoffs Técnicos**
+
 **Scraping vs API REST**
 
 Apesar do PDF mencionar “API REST”, os dados da ANS são disponibilizados via repositório FTP público, sem endpoints REST clássicos.
@@ -89,7 +90,7 @@ Justificativa:
 
 - Evita hardcode de URLs
 
-Separação de Responsabilidades (Arquitetura)
+**Separação de Responsabilidades (Arquitetura)**
 
 O código foi dividido em módulos com responsabilidades claras:
 
@@ -119,6 +120,7 @@ Para contornar isso, utilizei encoding explicito na leitura (latin1), normalizei
 
 
 **Formatação Monetária (BRL)**
+
 Formatar valores como string vs manter valores numéricos
 
 Os valores foram mantidos como float durante todo o processamento, a formatação para BRL foi aplicada apenas na etapa final de exportação.
@@ -176,11 +178,11 @@ python -m api_ans.main
 
 **Arquivos Gerados**
 
-despesas_consolidadas.csv
+- despesas_consolidadas.csv
 
-despesas_agregadas.csv
+- despesas_agregadas.csv
 
-Teste_Adriano_Gomes.zip
+- Teste_Adriano_Gomes.zip
 
 Todos gerados automaticamente pelo pipeline.
 
@@ -202,12 +204,12 @@ linux/mac:
 
 Instale dependências:
 
-pip install -r requirements.txt
+1. pip install -r requirements.txt
 
 
 Execute:
 
-python -m api_ans.main
+1. python -m api_ans.main
 
 
 **Considerações Finais:**
