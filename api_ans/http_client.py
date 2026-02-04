@@ -1,3 +1,4 @@
+#Imports
 import requests
 
 def get_url(url: str) -> str:

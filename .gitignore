@@ -20,7 +20,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Dados (NÃO versionar dados brutos ou processados)
+# Dados
 data/raw/
 data/processed/
 
